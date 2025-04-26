@@ -1,5 +1,3 @@
-providers = ["nix", "docker"]
-
 [phases.setup]
 nixPkgs = ["nginx", "php", "phpPackages.composer", "phpPackages.fpm"]
 
