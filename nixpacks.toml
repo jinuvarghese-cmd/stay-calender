@@ -1,11 +1,11 @@
 [build]
 builder = "heroku/buildpacks:20"
-buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache && chmod -R 777 storage bootstrap/cache"
-postBuildCommand = "chmod +x test-fpm.sh && ./test-fpm.sh"
+buildCommand = "composer install && npm install && npm run build && chmod -R 775 storage bootstrap/cache"
+
 [deploy]
-startCommand = "sh -c 'netstat -tuln && php-fpm -D && nginx -g \"daemon off;\"'"
-restartPolicyType = "ON_FAILURE"
+startCommand = "sh -c 'php-fpm -y ./nginx/php-fpm.conf -d error_log=/dev/stderr && nginx -c /app/nginx/nginx.conf -g \"daemon off;\"'"
 
 [env]
+APP_ENV = "production"
+APP_DEBUG = "true"
 LOG_CHANNEL = "stderr"
-APP_DEBUG = "false"
