@@ -1,13 +1,15 @@
+providers = ["nix", "docker"]
+
 [phases.setup]
-nixPkgs = ["php", "php-fpm", "nginx"]
+nixPkgs = ["nginx", "php", "phpPackages.composer", "phpPackages.fpm"]
 
 [phases.build]
 cmds = [
-  "composer install --no-interaction --prefer-dist --optimize-autoloader",
-  "npm install && npm run build"
+  "composer install --no-dev --optimize-autoloader",
+  "php artisan config:cache",
+  "php artisan route:cache",
+  "php artisan view:cache"
 ]
 
-[phases.start]
-cmds = [
-  "php-fpm & nginx -c /app/nginx/nginx.conf -g 'daemon off;'"
-]
+[start]
+cmd = "php-fpm -y ./nginx/php-fpm.conf && nginx -c /app/nginx/nginx.conf"
