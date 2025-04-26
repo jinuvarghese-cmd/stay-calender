@@ -1,13 +1,7 @@
-[phases.setup]
-nixPkgs = ["nginx", "php81", "php81Packages.composer"]
+[build]
+builder = "heroku/buildpacks:20"
+buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache"
 
-[phases.build]
-cmds = [
-  "composer install --no-dev --optimize-autoloader",
-  "php artisan config:cache",
-  "php artisan route:cache",
-  "php artisan view:cache"
-]
-
-[start]
-cmd = "php-fpm -y ./nginx/php-fpm.conf && nginx -c /app/nginx/nginx.conf"
+[deploy]
+startCommand = "php-fpm -y ./nginx/php-fpm.conf && nginx -c /app/nginx/nginx.conf"
+restartPolicyType = "ON_FAILURE"
