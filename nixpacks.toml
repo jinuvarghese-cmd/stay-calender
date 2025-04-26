@@ -1,0 +1,13 @@
+[phases.setup]
+nixPkgs = ["php", "php-fpm", "nginx"]
+
+[phases.build]
+cmds = [
+  "composer install --no-interaction --prefer-dist --optimize-autoloader",
+  "npm install && npm run build"
+]
+
+[phases.start]
+cmds = [
+  "php-fpm & nginx -c /app/nginx/nginx.conf -g 'daemon off;'"
+]
