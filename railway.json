@@ -2,7 +2,7 @@
     "build": {
       "use": "@railway/php",
       "variables": {
-        "NODE_VERSION": "18"
+        "NODE_VERSION": "22"
       },
       "commands": [
         "composer install --no-interaction --prefer-dist --optimize-autoloader",
