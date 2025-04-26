@@ -162,7 +162,7 @@ import {
   format, addDays, parseISO, isWithinInterval, isSameDay, 
   isBefore, isAfter, differenceInDays, startOfDay, subDays
 } from 'date-fns';
-import BookingModal from '@/components/BookingModal.vue';
+import BookingModal from '@/Components/BookingModal.vue';
 
 const bookingStore = useBookingStore();
 const bookings = computed(() => bookingStore.bookings);
