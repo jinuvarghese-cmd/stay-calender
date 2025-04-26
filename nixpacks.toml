@@ -1,8 +1,7 @@
 [build]
 builder = "heroku/buildpacks:20"
 buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache && chmod -R 777 storage bootstrap/cache"
-postBuildCommand = "sh -c 'php -v && php-fpm -t'"
-
+postBuildCommand = "chmod +x test-fpm.sh && ./test-fpm.sh"
 [deploy]
 startCommand = "sh -c 'netstat -tuln && php-fpm -D && nginx -g \"daemon off;\"'"
 restartPolicyType = "ON_FAILURE"
