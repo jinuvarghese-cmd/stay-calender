@@ -1,9 +1,9 @@
 [build]
 builder = "heroku/buildpacks:20"
-buildCommand = "composer install && npm install && npm run build && chmod -R 777 storage bootstrap/cache"
+buildCommand = "composer install --no-dev && chmod -R 777 storage bootstrap/cache"
 
 [deploy]
-startCommand = "sh -c 'php -v && php -m && php -i && php artisan serve --host=0.0.0.0 --port=8080'"
+startCommand = "php -S 0.0.0.0:8080 public/index.php"
 
 [env]
 APP_ENV="local"

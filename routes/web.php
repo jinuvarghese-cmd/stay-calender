@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\DB;
 //     return Inertia::render('BookingCalendar'); // This will load the `BookingCalendar.vue` component
 // });
 
+Route::get('/test', function() { return response('OK'); });
+
 
 Route::get('/', function () {
     return Inertia::render('BookingCalendar');
