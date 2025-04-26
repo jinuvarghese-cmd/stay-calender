@@ -3,7 +3,7 @@ builder = "heroku/buildpacks:20"
 buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache && chmod -R 777 storage bootstrap/cache"
 
 [deploy]
-startCommand = "php-fpm -y ./nginx/php-fpm.conf -d display_errors=stderr -d error_reporting=E_ALL >> /var/log/php-fpm.log 2>&1 & nginx -c /app/nginx/nginx.conf -g 'daemon off;'"
+startCommand = "sh -c 'php-fpm -D && nginx -g \"daemon off;\"'"
 restartPolicyType = "ON_FAILURE"
 
 [env]
