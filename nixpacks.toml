@@ -1,11 +1,10 @@
 [build]
 builder = "heroku/buildpacks:20"
-buildCommand = "composer install --no-dev --optimize-autoloader && php artisan key:generate && npm install && npm run build && chmod -R 775 storage bootstrap/cache"
+buildCommand = "composer install && npm install && npm run build && chmod -R 777 storage bootstrap/cache"
 
 [deploy]
-startCommand = "php artisan serve --host=0.0.0.0 --port=8080"
+startCommand = "sh -c 'php -v && php -m && php -i && php artisan serve --host=0.0.0.0 --port=8080'"
 
 [env]
-APP_ENV="production"
+APP_ENV="local"
 APP_DEBUG="true"
-LOG_CHANNEL="stderr"
