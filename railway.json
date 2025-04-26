@@ -6,7 +6,6 @@
   "deploy": {
     "runtime": "V2",
     "numReplicas": 1,
-    "startCommand": "php -d variables_order=EGPCS -S 0.0.0.0:$(php -r 'echo getenv(\"PORT\");') -t public",
     "sleepApplication": false,
     "multiRegionConfig": {
       "europe-west4-drams3a": {
