@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "transaction_id": "TXN005",
+      "customer_name": "Steve Smith",
+      "customer_email": "steve.smith@example.com",
+      "transaction_status": "completed",
+      "room": "101",
+      "room_type": "deluxe",
+      "check_in": "2025-05-01",
+      "check_out": "2025-05-03",
+      "base_amount": 1000,
+      "tax_amount": 100,
+      "total_amount": 1100
+    },
+    {
+      "id": 2,
+      "transaction_id": "TXN006",
+      "customer_name": "AB de Villiers",
+      "customer_email": "ab.devilliers@example.com",
+      "transaction_status": "completed",
+      "room": "102",
+      "room_type": "deluxe",
+      "check_in": "2025-05-02",
+      "check_out": "2025-05-05",
+      "base_amount": 3000,
+      "tax_amount": 300,
+      "total_amount": 3300
+    }
+  ]
+  
